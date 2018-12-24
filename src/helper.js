@@ -9,7 +9,6 @@ import { Log } from "./tool/log";
 import { ModelLoader } from "./model/loader";
 import readline from 'readline';
 import regexConfig from "./configs/regex";
-import { PwdTool } from "./tool/pwd";
 
 const connectionConfig = modelConfig.connection;
 
