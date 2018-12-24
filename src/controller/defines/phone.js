@@ -3,7 +3,10 @@ import { Log } from '../../tool/log';
 import regexConfig from '../../configs/regex';
 
 // 获取正则
+const normalRegex = regexConfig.normal;
 const phoneRegex = regexConfig.phone;
+
+const SequelizeOp = Sequelize.Op;
 
 export default {
     url: `${controllerConfig.commonUrlPrefix}/lable`,
@@ -24,8 +27,47 @@ export default {
 
             // 根据不同的请求类型进行不同的处理
             switch (type) {
-                case 'number':
-                    // TODO
+                case 'numbers':
+                    // 获取参数
+                    let warningNum = query.warningNum || null;
+
+                    // 参数校验
+                    if (!warningNum || !warningNum.match(normalRegex.naturalNumber)) {
+                        Log.console.error('status 400', `wraningNum: ${wraningNum}`);
+                        return ctx.response.status = 400;
+                    }
+
+                    // 参数类型转换
+                    warningNum = parseInt(warningNum);
+
+                    // 查询数据库
+                    let phones;
+                    try {
+                        phones = await models.phone.findAll(
+                            where: {
+                                blockNum: {
+                                    [SequelizeOp.gte]: warningNum
+                                }
+                            }
+                        );
+                    } catch (e) {
+                        Log.error('status 500', e);
+                        return ctx.response.status = 500;
+                    }
+
+                    // 结果列表
+                    let result = [];
+
+                    if (phones) {
+                        phones.forEach((item) => {
+                            result.push(item.number);
+                        });
+                    }
+
+                    // 返回结果
+                    return ctx.response.body = {
+                        numbers: result
+                    };
                 case 'blockNum':
                     // TODO
                 default:
