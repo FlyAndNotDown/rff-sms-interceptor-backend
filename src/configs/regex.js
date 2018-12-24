@@ -14,5 +14,8 @@ export default mainConfig.devMode ? {
      */
     normal: {
         naturalNumber: /^[1-9]\d*|0$/
+    },
+    phone: {
+        number: /^[0-9]{11,11}$/
     }
 } : {};
