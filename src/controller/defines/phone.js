@@ -33,7 +33,7 @@ export default {
 
                     // 参数校验
                     if (!warningNum || !warningNum.match(normalRegex.naturalNumber)) {
-                        Log.console.error('status 400', `wraningNum: ${wraningNum}`);
+                        Log.error('status 400', `wraningNum: ${wraningNum}`);
                         return ctx.response.status = 400;
                     }
 
@@ -69,7 +69,39 @@ export default {
                         numbers: result
                     };
                 case 'blockNum':
-                    // TODO
+                    // 获取参数
+                    let number = query.number || null;
+
+                    // 参数校验
+                    if (!number || !number.match(phoneRegex.number)) {
+                        Log.error('status 400', `number: ${number}`);
+                        return ctx.response.status = 400;
+                    }
+
+                    // 查询数据库
+                    let phone;
+                    try {
+                        phone = await models.phone.findAll({
+                            where: {
+                                number: {
+                                    [SequelizeOp.eq]: number
+                                }
+                            }
+                        });
+                    } catch (e) {
+                        Log.error('status 500', e);
+                        return ctx.response.status = 500;
+                    }
+
+                    // 返回结果
+                    if (!phone) {
+                        return ctx.response.body = {
+                            blockNum: 0
+                        };
+                    }
+                    return ctx.response.body = {
+                        blockNum: phone.blockNum
+                    };
                 default:
                     Log.error('status 400', `type: ${type}`);
                     ctx.response.status = 400;
