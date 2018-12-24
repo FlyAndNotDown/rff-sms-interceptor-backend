@@ -10,7 +10,7 @@ import mainConfig from './main';
  */
 export default mainConfig.devMode ? {
     connection: {
-        database: 'blog',
+        database: 'rff',
         username: 'development',
         password: 'development',
         options: {
