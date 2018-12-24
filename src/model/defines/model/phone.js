@@ -1,15 +1,7 @@
-/**
- * /model/defines/model/label.js
- * @author John Kindem
- */
-
 import Sequelize from 'sequelize';
 
-/**
- * 导出标签模型定义
- */
 export default {
-    name: 'label',
+    name: 'phone',
     description: {
         id: {
             type: Sequelize.BIGINT,
@@ -17,8 +9,11 @@ export default {
             autoIncrement: true,
             primaryKey: true
         },
-        name: {
-            type: Sequelize.STRING(20)
+        number: {
+            type: Sequelize.STRING(11)
+        },
+        blockNum: {
+            type: Sequelize.BIGINT(11)
         }
     }
 };
