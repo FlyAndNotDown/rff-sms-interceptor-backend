@@ -145,8 +145,20 @@ export default {
 
             // 如果没有查询到数据
             if (!phone) {
+                // 存储新的电话号码
+                try {
+                    await models.phone.create({
+                        number: number,
+                        blockNum: 1
+                    });
+                } catch (e) {
+                    Log.error('status 500', e);
+                    ctx.response.status = 500;
+                    return null;
+                }
+
                 return ctx.response.body = {
-                    success: false
+                    success: true
                 };
             }
 
