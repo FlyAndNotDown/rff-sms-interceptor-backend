@@ -16,6 +16,6 @@ export default mainConfig.devMode ? {
         naturalNumber: /^[1-9]\d*|0$/
     },
     phone: {
-        number: /^[0-9]{11,11}$/
+        number: /^0?(13|14|15|17|18|19)[0-9]{9}$/
     }
 } : {};

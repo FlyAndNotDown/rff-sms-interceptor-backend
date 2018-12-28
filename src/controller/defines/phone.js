@@ -133,7 +133,7 @@ export default {
             let number = requestBody.number || null;
 
             // 参数校验
-            if (!number || !number.match(normalRegex.naturalNumber)) {
+            if (!number || !number.match(phoneRegex.number)) {
                 Log.error('status 400', `number: ${number}`);
                 ctx.response.status = 400;
                 return null;
