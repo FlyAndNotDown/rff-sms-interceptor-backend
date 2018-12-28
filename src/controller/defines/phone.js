@@ -24,7 +24,7 @@ const SequelizeOp = Sequelize.Op;
  * * @return {{ success: boolean }} JSON数据
  */
 export default {
-    url: `${controllerConfig.commonUrlPrefix}/lable`,
+    url: `${controllerConfig.commonUrlPrefix}/phone`,
     get: (db, models) => {
         return async (ctx, next) => {
             await next();
