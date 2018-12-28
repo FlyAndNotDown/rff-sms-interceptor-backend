@@ -1,6 +1,7 @@
 import controllerConfig from '../../configs/controller';
 import { Log } from '../../tool/log';
 import regexConfig from '../../configs/regex';
+import { Sequelize } from 'sequelize';
 
 // 获取正则
 const normalRegex = regexConfig.normal;
