@@ -9,6 +9,20 @@ const phoneRegex = regexConfig.phone;
 
 const SequelizeOp = Sequelize.Op;
 
+/**
+ * RESTful API
+ * @description get 根据危险举报数量返回手机号码
+ * * @param {'numbers'} type get类型
+ * * @param {number} warningNum 危险举报数量
+ * * @return {{ numbers: [] }} JSON数据
+ * @description get 获取某个手机号码的被举报次数
+ * * @param {'blockNum'} type get类型
+ * * @param {string} number 手机号码
+ * * @return {{ blockNum: number }} JSON数据
+ * @description put 自增某一个手机号码的举报次数
+ * * @param {string} number 手机号码
+ * * @return {{ success: boolean }} JSON数据
+ */
 export default {
     url: `${controllerConfig.commonUrlPrefix}/lable`,
     get: (db, models) => {
