@@ -96,11 +96,9 @@ export default {
                     // 查询数据库
                     let phone;
                     try {
-                        phone = await models.phone.findAll({
+                        phone = await models.phone.findOne({
                             where: {
-                                number: {
-                                    [SequelizeOp.eq]: number
-                                }
+                                number: number
                             }
                         });
                     } catch (e) {
@@ -145,11 +143,9 @@ export default {
             // 查询数据库
             let phone;
             try {
-                phone = models.phone.findOne({
+                phone = await models.phone.findOne({
                     where: {
-                        number: {
-                            [SequelizeOp.eq]: number
-                        }
+                        number: number
                     }
                 });
             } catch (e) {
@@ -179,7 +175,7 @@ export default {
 
             // 自增举报数量
             try {
-                await phone.increment('blockNum');
+                await phone.increment('blockNum', {by: 1});
             } catch(e) {
                 Log.error('status 500', e);
                 ctx.response.status = 500;
