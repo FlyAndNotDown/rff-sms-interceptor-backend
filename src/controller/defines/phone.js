@@ -75,7 +75,10 @@ export default {
 
                     if (phones) {
                         phones.forEach((item) => {
-                            result.push(item.number);
+                            result.push({
+                                number: item.number,
+                                blockNum: item.blockNum
+                            });
                         });
                     }
 
