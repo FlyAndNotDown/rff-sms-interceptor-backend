@@ -11,5 +11,5 @@ import KeyGrip from 'keygrip';
  */
 export default mainConfig.devMode ? {
     listenPort: 17782,
-    keys: new KeyGrip(['kindem no.1 over the world'], 'sha256')
+    keys: new KeyGrip(['root free firewall message module backend'], 'sha256')
 } : {};
