@@ -43,13 +43,13 @@ export default {
                     // 查询数据库
                     let phones;
                     try {
-                        phones = await models.phone.findAll(
+                        phones = await models.phone.findAll({
                             where: {
                                 blockNum: {
                                     [SequelizeOp.gte]: warningNum
                                 }
                             }
-                        );
+                        });
                     } catch (e) {
                         Log.error('status 500', e);
                         return ctx.response.status = 500;
