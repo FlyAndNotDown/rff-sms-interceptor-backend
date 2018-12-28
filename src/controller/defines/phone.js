@@ -115,7 +115,7 @@ export default {
 
             // 获取参数
             const requestBody = ctx.request.body || {};
-            const number = requestBody.number || null;
+            let number = requestBody.number || null;
 
             // 参数校验
             if (!number || !number.match(normalRegex.naturalNumber)) {
