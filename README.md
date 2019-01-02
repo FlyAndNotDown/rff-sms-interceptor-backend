@@ -18,7 +18,7 @@
 如果你需要自己写新的逻辑，看一看我写的代码就能懂，不难。
 
 # 💾接口文档
-暴露的接口采用了`RESTful API`形式，详细的接口文档可以查看我写的`WiKi`，传送门在这里：[RFF-Backend-WiKi](https://github.com/FlyAndNotDown/rff-sms-interceptor-backend/wiki)
+暴露的接口采用了`RESTful API`形式，详细的接口文档可以查看我写的`WiKi`，传送门在这里：[RFF-Backend-WiKi](https://github.com/FlyAndNotDown/rff-sms-interceptor-backend/wiki/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3)
 
 # 🏃部署/私有化指北
 如果还没安装`Node.js`和`npm`，请自行安装，安装完之后，请安装`yarn`：
